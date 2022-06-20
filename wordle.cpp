@@ -96,10 +96,10 @@ int main()
     fstream newfile;
     srand(time(0));
 
-    // input file stream
+    //Input file stream
     ifstream file("mit.txt");
 
-    // count number of total lines in the file and store the lines in the string vector
+    //Count number of total lines in the file and store the lines in the string vector
     int total_lines = 0;
     while (getline(file, line))
     {
@@ -107,18 +107,21 @@ int main()
         lines.push_back(line);
     }
 
+    //Pick a random word from the list of words 
     int random_number = rand() % total_lines;
 
-
-    //cout << lines[random_number] << random_number << "dank" << total_lines << endl;
+    //Repick word untill the one chosen is 5 letters long
     while(lines[random_number].length() != 5){
-        //cout << random_number << "change" << endl;
         random_number = rand() % total_lines;
     }
 
+    //Create game object
     Game game;
+    //Set game word
     game.setWord(lines[random_number]);
+    //Show start game instuctions
     game.sayWord();
+    //Start game with first turn
     game.turn();
     return 0;
 }
